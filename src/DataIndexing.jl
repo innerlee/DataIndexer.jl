@@ -39,7 +39,7 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".vbs", ".xls", ".lml", ".db", ".avro", ".flo", ".dump", ".lic", ".filtered", ".path", ".rockspec", ".dav", ".hik",
     ".nef", ".template", ".bat", ".interp", ".vtp", ".xsl", ".ebuild", ".patch", ".mask", ".defaults", ".inc", ".sens",
     ".py~", ".md5", ".info", ".trans", ".vg", ".cdf", ".h5", ".ta.gz", ".txz", ".old", ".np", ".inv", ".pem", ".obj",
-    ".heic", ".nv12", ".eff", ".dll", ".res"]
+    ".heic", ".nv12", ".eff", ".dll", ".res", ".lck", ".tmp"]
 
 FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2"]
 NUM_SHOW_DIR = 222
