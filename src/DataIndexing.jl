@@ -131,7 +131,10 @@ haspattern(list, p) = try
     end
     if length(list) > PATTERN_DETECT_THRESHOLD * 3 && nu < 5
         lens = length.(list)
-        any(sum(lens .== l) > length(list) - 5 for l in unique(lens)) && return true
+        unilens = unique(lens)
+        any(sum(lens .== l) > length(list) - 5 for l in unilens) && return true
+        lens = collect(setdiff(Set(unilens), Set([24, 32])))
+        length(length) == 1 && sum(lens .== lens[1]) < 5 && return true
     end
     return false
 catch
