@@ -46,94 +46,94 @@ NUM_SHOW_DIR = 222
 NUM_SUPPRESS = 11111
 PATTERN_DETECT_THRESHOLD = 33
 MIN_DEPTH = 1
-DEBUG = true
+DEBUG = [false]
 
 iskeepdir(d) = try
-        return !(match(r"^\d+$", d) !== nothing ||
-            any(x -> endswith(lowercase(d), x), STOPS_END) ||
-            any(x -> startswith(lowercase(d), x), STOPS_START) ||
-            any(x -> lowercase(d) == x, STOPS_FULL) ||
-            any(x -> occursin(x, lowercase(d)), STOPS_IN))
-    catch
-        return false
-    end
+    return !(match(r"^\d+$", d) !== nothing ||
+            any(x->endswith(lowercase(d), x), STOPS_END) ||
+            any(x->startswith(lowercase(d), x), STOPS_START) ||
+            any(x->lowercase(d) == x, STOPS_FULL) ||
+            any(x->occursin(x, lowercase(d)), STOPS_IN))
+catch
+    return false
+end
 
 isfileheurstic(f) = try
-        return any(x -> endswith(lowercase(f), x), FILE_EXT)
-    catch
-        return false
-    end
+    return any(x->endswith(lowercase(f), x), FILE_EXT)
+catch
+    return false
+end
 
 iskeepfile(f) = try
-        if any(x -> endswith(lowercase(f), x), FILE_EXT)
-            ('0' <= f[1] <= '9') || return true
-            return tryparse(Int, rsplit(f, "."; limit=2)[1]) === nothing
-        end
-        return false
-    catch
-        return false
+    if any(x->endswith(lowercase(f), x), FILE_EXT)
+        ('0' <= f[1] <= '9') || return true
+        return tryparse(Int, rsplit(f, "."; limit = 2)[1]) === nothing
     end
+    return false
+catch
+    return false
+end
 
 ispasscheck(f, p) = try
-        any(x -> startswith(lowercase(f), x), SKIP_START) && return true
-        any(x -> occursin(x, lowercase(f)), SKIP_IN) && return true
-        any(x -> endswith(lowercase(f), x), PASS_EXT) && return true
-        if startswith(f, p)
-            s = split(f, r"[._-]", limit=2, keepempty=false)
-            length(s) == 2 && s[1] == p && tryparse(Int, s[2]) !== nothing && return true
-        end
-        return false
-    catch
-        return true
+    any(x->startswith(lowercase(f), x), SKIP_START) && return true
+    any(x->occursin(x, lowercase(f)), SKIP_IN) && return true
+    any(x->endswith(lowercase(f), x), PASS_EXT) && return true
+    if startswith(f, p)
+        s = split(f, r"[._-]", limit = 2, keepempty = false)
+        length(s) == 2 && s[1] == p && tryparse(Int, s[2]) !== nothing && return true
     end
+    return false
+catch
+    return true
+end
 
 haspatternquick(list) = try
-        l = length(list[1])
-        if l > 0 && !occursin("batch", list[1]) && all(length(f) == l for f in list)
-            l > 1 && length(list) > PATTERN_DETECT_THRESHOLD * 3 && return true
-            l > 2 && length(list) > PATTERN_DETECT_THRESHOLD && return true
-            l > 6 && length(list) > PATTERN_DETECT_THRESHOLD / 2 && return true
-            l > 10 && length(list) > PATTERN_DETECT_THRESHOLD / 3 && return true
-            l > 15 && length(list) > PATTERN_DETECT_THRESHOLD / 4 && return true
-            l > 30 && length(list) > PATTERN_DETECT_THRESHOLD / 5 && return true
-            l > 40 && length(list) > PATTERN_DETECT_THRESHOLD / 6 && return true
-            l > 50 && length(list) > PATTERN_DETECT_THRESHOLD / 9 && return true
-        end
-        return false
-    catch
-        return false
+    l = length(list[1])
+    if l > 0 && !occursin("batch", list[1]) && all(length(f) == l for f in list)
+        l > 1 && length(list) > PATTERN_DETECT_THRESHOLD * 3 && return true
+        l > 2 && length(list) > PATTERN_DETECT_THRESHOLD && return true
+        l > 6 && length(list) > PATTERN_DETECT_THRESHOLD / 2 && return true
+        l > 10 && length(list) > PATTERN_DETECT_THRESHOLD / 3 && return true
+        l > 15 && length(list) > PATTERN_DETECT_THRESHOLD / 4 && return true
+        l > 30 && length(list) > PATTERN_DETECT_THRESHOLD / 5 && return true
+        l > 40 && length(list) > PATTERN_DETECT_THRESHOLD / 6 && return true
+        l > 50 && length(list) > PATTERN_DETECT_THRESHOLD / 9 && return true
     end
+    return false
+catch
+    return false
+end
 
 haspattern(list, p) = try
-        list = [rsplit(f, "."; limit=2)[1] for f in list]
-        if length(list) > PATTERN_DETECT_THRESHOLD / 6 && !occursin("batch", list[1]) && (m = match(r"^(.*?[^\d])\d+$", list[1])) !== nothing
-            length(m.captures[1]) > 1 && all(startswith.(list, m.captures[1])) && return true
-        end
-        length(list) < PATTERN_DETECT_THRESHOLD / 4 && return false
-        all(occursin.("batch", list)) && return false
-        nu = length(unique(length.(list)))
-        nu == 1 && length(list[1]) == 2 && length(list) > PATTERN_DETECT_THRESHOLD * 2 && return true
-        nu == 1 && length(list[1]) > 2 && length(list) > PATTERN_DETECT_THRESHOLD && return true
-        nu == 1 && length(list[1]) > 15 && length(list) > PATTERN_DETECT_THRESHOLD / 3 && return true
-        nu == 2 && length(list) > PATTERN_DETECT_THRESHOLD * 3 && return true
-        nu == 1 && !occursin("batch", list[1]) && all(startswith.(list, p)) && return true
-        if length(list) > PATTERN_DETECT_THRESHOLD / 2 && match(r"^(.*?)[\d_-]*$", list[1]).captures[1] == ""
-            all(match(r"^(.*?)[\d_-]*$", f).captures[1] == "" for f in list) && return true
-        end
-        if length(list) > PATTERN_DETECT_THRESHOLD * 3 && match(r"^(.*?[^\d])\d+$", list[1]) !== nothing
-            nreduce = length(unique([match(r"^(.*?)[\d_-]*$", f).captures[1] for f in list]))
-            nreduce / length(list) < 0.1 && return true
-        end
-        if length(list) > PATTERN_DETECT_THRESHOLD * 3 && nu < 5
-            lens = length.(list)
-            any(sum(lens .== l) > length(list) - 5 for l in unique(lens)) && return true
-        end
-        return false
-    catch
-        return false
+    list = [rsplit(f, "."; limit = 2)[1] for f in list]
+    if length(list) > PATTERN_DETECT_THRESHOLD / 6 && !occursin("batch", list[1]) && (m = match(r"^(.*?[^\d])\d+$", list[1])) !== nothing
+        length(m.captures[1]) > 1 && all(startswith.(list, m.captures[1])) && return true
     end
+    length(list) < PATTERN_DETECT_THRESHOLD / 4 && return false
+    all(occursin.("batch", list)) && return false
+    nu = length(unique(length.(list)))
+    nu == 1 && length(list[1]) == 2 && length(list) > PATTERN_DETECT_THRESHOLD * 2 && return true
+    nu == 1 && length(list[1]) > 2 && length(list) > PATTERN_DETECT_THRESHOLD && return true
+    nu == 1 && length(list[1]) > 15 && length(list) > PATTERN_DETECT_THRESHOLD / 3 && return true
+    nu == 2 && length(list) > PATTERN_DETECT_THRESHOLD * 3 && return true
+    nu == 1 && !occursin("batch", list[1]) && all(startswith.(list, p)) && return true
+    if length(list) > PATTERN_DETECT_THRESHOLD / 2 && match(r"^(.*?)[\d_-]*$", list[1]).captures[1] == ""
+        all(match(r"^(.*?)[\d_-]*$", f).captures[1] == "" for f in list) && return true
+    end
+    if length(list) > PATTERN_DETECT_THRESHOLD * 3 && match(r"^(.*?[^\d])\d+$", list[1]) !== nothing
+        nreduce = length(unique([match(r"^(.*?)[\d_-]*$", f).captures[1] for f in list]))
+        nreduce / length(list) < 0.1 && return true
+    end
+    if length(list) > PATTERN_DETECT_THRESHOLD * 3 && nu < 5
+        lens = length.(list)
+        any(sum(lens .== l) > length(list) - 5 for l in unique(lens)) && return true
+    end
+    return false
+catch
+    return false
+end
 
-function walk(root, depth=0, parentname="^")
+function walk(root, depth = 0, parentname = "^")
     content = nothing
     try
         content = readdir(root)
@@ -187,7 +187,7 @@ function walk(root, depth=0, parentname="^")
         for dir in dirs
             path = joinpath(root, dir)
             if !islink(path)
-                for (root_l, dirs_l, files_l) in walk(path, depth+1, dir)
+                for (root_l, dirs_l, files_l) in walk(path, depth + 1, dir)
                     put!(chnl, (root_l, dirs_l, files_l))
                 end
             end
