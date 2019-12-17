@@ -136,7 +136,7 @@ haspattern(list, p) = try
         lens = collect(setdiff(Set(unilens), Set([24, 32])))
         length(lens) <= 5 && sum(lens .== lens[1]) < max(10, length(list) / 50) && return true
     end
-    if length(list) > PATTERN_DETECT_THRESHOLD * 5
+    if length(list) > PATTERN_DETECT_THRESHOLD * 4
         pattern_starts = ["giphy-", "bing-", "yt-", "vine-", "getty-", "flickr-"]
         any(sum(startswith.(list, site)) > PATTERN_DETECT_THRESHOLD for site in pattern_starts) && return true
     end
