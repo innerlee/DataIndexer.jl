@@ -138,7 +138,7 @@ haspattern(list, p) = try
     end
     if length(list) > PATTERN_DETECT_THRESHOLD * 5
         pattern_starts = ["giphy-", "bing-", "yt-", "vine-", "getty-", "flickr-"]
-        any(sum(startswith.(list, site)) > PATTERN_DETECT_THRESHOLD * 2 for site in pattern_starts) && return true
+        any(sum(startswith.(list, site)) > PATTERN_DETECT_THRESHOLD for site in pattern_starts) && return true
     end
     return false
 catch
