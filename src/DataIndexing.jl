@@ -2,14 +2,14 @@ module DataIndexing
 
 export dataindex
 
-STOPS_START = [".", "_", "-", "id_", "label ", "sdk_", "gcc-", "git-"]
+STOPS_START = [".", "_", "-", "id_", "label ", "sdk_", "gcc-", "git-", "glew-", "bullet3-"]
 STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components", "src", "include", "runs", "man3",
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
     "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep",
-    "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares"]
+    "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
-    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi"]
+    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "model.ckpt", "model.pth"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached"]
@@ -18,12 +18,12 @@ SKIP_IN = ["tfevents"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
     ".egg", ".conf", ".yaml", ".rviz", ".launch", ".xml", ".ipynb", ".c", ".cpp", ".h", ".cu", ".tsv", ".o", ".iso",
-    ".pub", ".zsh", ".bash", ".yml", ".pickle", ".meta", ".pkl", ".ply", ".bin", ".eps", ".gp", ".skv", ".mat",
+    ".pub", ".zsh", ".bash", ".yml", ".pickle", ".meta", ".pkl", ".ply", ".bin", ".eps", ".gp", ".skv", ".mat", ".cuh",
     ".key", ".csv", ".proto", ".pcap", ".timestamps", ".m", ".nrrd", ".bak", ".pyc", ".hpp", ".pk", ".mov", ".svs",
     ".prototxt", "xlsx", ".lua", ".a", ".odgt", ".log", ".pyx", ".lock", ".rb", ".html", ".ini", ".caffemodel", ".dng",
     ".out", ".cmake", ".java", ".pdm", ".index", ".pdf", ".t7", ".pcd", ".dat", ".idx", ".prof", ".rst", ".js", ".in",
     ".cc", ".tfrecords", ".pbtxt", ".scsv", ".dict", ".proper", ".txt2", ".tag", ".value", ".mexa64", ".tpl", ".pptx",
-    ".exe", ".pxd", ".binaryproto", ".calibration", ".ig", ".tx", ".tfrecord", ".filter", ".solverstate", ".mhd", ".cuh",
+    ".exe", ".pxd", ".binaryproto", ".calibration", ".ig", ".tx", ".tfrecord", ".filter", ".solverstate", ".mhd",
     ".zraw", ".raw", ".pb", ".pgm", ".ppm", ".uff", ".pyt", ".wts", ".cloc", ".runlog", ".pfm", ".model", ".lst", ".wav",
     ".2runlog", ".gt", "nii", ".sdf", ".ann", ".pm", ".mo", ".sample", ".la", ".so", ".so.1", ".so.2", ".so.3", ".so.4",
     ".spec", ".nii.gz", ".cfg", ".ckpt", ".arw", ".go", ".m4", ".plist", ".sln", ".vcproj", ".params", ".states",
@@ -39,9 +39,14 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".vbs", ".xls", ".lml", ".db", ".avro", ".flo", ".dump", ".lic", ".filtered", ".path", ".rockspec", ".dav", ".hik",
     ".nef", ".template", ".bat", ".interp", ".vtp", ".xsl", ".ebuild", ".patch", ".mask", ".defaults", ".inc", ".sens",
     ".py~", ".md5", ".info", ".trans", ".vg", ".cdf", ".h5", ".ta.gz", ".txz", ".old", ".np", ".inv", ".pem", ".obj",
-    ".heic", ".nv12", ".eff", ".dll", ".res", ".lck", ".tmp"]
+    ".heic", ".nv12", ".eff", ".dll", ".res", ".lck", ".tmp", ".cache", ".bullet", ".plan", ".filters", ".xcscheme",
+    ".diff", ".cav", ".install", ".properties", ".f90", ".dist", ".rc", ".stl", ".xacro", ".urdf", ".dae", ".mtl",
+    ".inl", ".ino", ".glsl", ".cl", ".mm", ".command", "bsp", ".d", ".make", ".pov", ".osl", ".manifest", ".nsi", ".ico",
+    ".po", ".blend", ".desktop", ".spi1d", ".spi3d", ".spimtx", ".icns", ".blender", ".pt", ".pak", ".css", ".dtd",
+    ".gir", ".its", ".loc", ".url", ".sed", ".sin", ".header", ".charset", ".tcl", ".alias", ".qml", ".qmltypes", ".prf",
+    ".qph", ".jar", ".gradle", ".mpg"]
 
-FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2"]
+FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z"]
 NUM_SHOW_DIR = 222
 NUM_SUPPRESS = 11111
 PATTERN_DETECT_THRESHOLD = 33
