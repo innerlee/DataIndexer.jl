@@ -152,7 +152,7 @@ function walk(root, depth = 0, parentname = "^")
                 ispasscheck(name, parentname) && continue
                 try
                     if depth == 0 || length(dirs) < NUM_SHOW_DIR
-                        DEBUG && !isfileheurstic(name) && !isdir(joinpath(root, name)) && println(joinpath(root, name))
+                        DEBUG[] && !isfileheurstic(name) && !isdir(joinpath(root, name)) && println(joinpath(root, name))
                         if (!isfileheurstic(name)) && isdir(joinpath(root, name))
                             iskeepdir(name) && push!(dirs, name)
                         else
@@ -199,9 +199,9 @@ end
 
 function dataindex(ROOTDIR)
     for (root, dirs, files) in walk(ROOTDIR)
-        DEBUG || println(root)
+        DEBUG[] || println(root)
         for f in files
-            DEBUG || println(joinpath(root, f))
+            DEBUG[] || println(joinpath(root, f))
         end
     end
 end
