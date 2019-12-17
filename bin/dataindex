@@ -12,7 +12,7 @@ end
 args = parse_args(s)
 
 ROOTDIR = args["rootdir"]
-DataIndexing.DEBUG[] = true
+# DataIndexing.DEBUG[] = true
 
 dataindex(ROOTDIR)
 
