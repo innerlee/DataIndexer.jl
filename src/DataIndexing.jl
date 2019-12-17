@@ -129,12 +129,12 @@ haspattern(list, p) = try
         nreduce = length(unique([match(r"^(.*?)[\d_-]*$", f).captures[1] for f in list]))
         nreduce / length(list) < 0.1 && return true
     end
-    if length(list) > PATTERN_DETECT_THRESHOLD * 3 && nu < 5
+    if length(list) > PATTERN_DETECT_THRESHOLD * 3 && nu < 10
         lens = length.(list)
         unilens = unique(lens)
         any(sum(lens .== l) > length(list) - 5 for l in unilens) && return true
         lens = collect(setdiff(Set(unilens), Set([24, 32])))
-        length(length) == 1 && sum(lens .== lens[1]) < 10 && return true
+        length(length) == 1 && sum(lens .== lens[1]) < max(10, length(list) / 50) && return true
     end
     return false
 catch
