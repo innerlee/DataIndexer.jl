@@ -134,7 +134,7 @@ haspattern(list, p) = try
         unilens = unique(lens)
         any(sum(lens .== l) > length(list) - 5 for l in unilens) && return true
         lens = collect(setdiff(Set(unilens), Set([24, 32])))
-        length(length) == 1 && sum(lens .== lens[1]) < 5 && return true
+        length(length) == 1 && sum(lens .== lens[1]) < 10 && return true
     end
     return false
 catch
