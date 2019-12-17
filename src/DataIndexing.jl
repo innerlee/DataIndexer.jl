@@ -46,7 +46,7 @@ NUM_SHOW_DIR = 222
 NUM_SUPPRESS = 11111
 PATTERN_DETECT_THRESHOLD = 33
 MIN_DEPTH = 1
-DEBUG = false
+DEBUG = true
 
 iskeepdir(d) = try
         return !(match(r"^\d+$", d) !== nothing ||
