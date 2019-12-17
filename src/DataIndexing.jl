@@ -5,7 +5,7 @@ export dataindex
 STOPS_START = [".", "_", "-", "id_", "label ", "sdk_", "gcc-", "git-", "glew-", "bullet3-"]
 STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components", "src", "include", "runs", "man3",
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
-    "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep",
+    "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep", "blender",
     "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake", "dependencies", "playground"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
