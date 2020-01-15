@@ -1,4 +1,4 @@
-# Data Indexing
+# Data Indexer
 
 Find datasets on your disk!
 
