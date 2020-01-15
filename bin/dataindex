@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 using ArgParse
-using DataIndexing
+using DataIndexer
 
 s = ArgParseSettings()
 @add_arg_table s begin
@@ -12,7 +12,7 @@ end
 args = parse_args(s)
 
 ROOTDIR = args["rootdir"]
-# DataIndexing.DEBUG[] = true
+# DataIndexer.DEBUG[] = true
 
 dataindex(ROOTDIR)
 

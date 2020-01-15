@@ -11,6 +11,6 @@ Find datasets on your disk!
 or
 
 ```julia
-julia> using DataIndexing
+julia> using DataIndexer
 julia> dataindex(".")
 ```

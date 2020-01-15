@@ -1,8 +1,8 @@
-# DataIndexing.jl
+# DataIndexer.jl
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [DataIndexing]
+Modules = [DataIndexer]
 ```

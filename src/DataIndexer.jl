@@ -1,4 +1,4 @@
-module DataIndexing
+module DataIndexer
 
 export dataindex
 

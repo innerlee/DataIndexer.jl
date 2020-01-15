@@ -1,6 +1,6 @@
-using DataIndexing
+using DataIndexer
 using Test
 
-@testset "DataIndexing.jl" begin
+@testset "DataIndexer.jl" begin
     # Write your own tests here.
 end
