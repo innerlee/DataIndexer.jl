@@ -1,17 +1,9 @@
 #!/usr/bin/env julia
-using ArgParse
 using DataIndexer
 
-s = ArgParseSettings()
-@add_arg_table s begin
-    "rootdir"
-        help = "root dir"
-        arg_type = String
-        required = true
-end
-args = parse_args(s)
+length(ARGS)!= 1 && error("Please specify the path you want to index!")
 
-ROOTDIR = args["rootdir"]
+ROOTDIR = ARGS[1]
 # DataIndexer.DEBUG[] = true
 
 dataindex(ROOTDIR)

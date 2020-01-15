@@ -3,10 +3,6 @@ uuid = "055c376e-f08b-11e9-0dad-f1cfcf4e5855"
 authors = ["lizz"]
 version = "0.1.0"
 
-[deps]
-OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
-Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
-
 [compat]
 julia = "1.1.1"
 
