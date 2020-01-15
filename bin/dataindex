@@ -1,7 +1,7 @@
 #!/usr/bin/env julia
 using DataIndexer
 
-length(ARGS)!= 1 && error("Please specify the path you want to index!")
+length(ARGS) != 1 && error("Please specify the path you want to index!")
 
 ROOTDIR = ARGS[1]
 # DataIndexer.DEBUG[] = true
