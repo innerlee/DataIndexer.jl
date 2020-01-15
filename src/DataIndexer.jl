@@ -10,7 +10,7 @@ STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components"
     "scripts"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
-    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "model.ckpt", "model.pth"]
+    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "model.ckpt", "model.pth", "julia/stdlib/v"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached"]
