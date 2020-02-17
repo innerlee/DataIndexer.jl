@@ -15,8 +15,9 @@ STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module"
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached"]
 SKIP_START = [".", "train-", "validation-"]
-SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile"]
-SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~"]
+SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
+    "copyright", "authors", "contributors"]
+SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
     ".egg", ".conf", ".yaml", ".rviz", ".launch", ".xml", ".ipynb", ".c", ".cpp", ".h", ".cu", ".tsv", ".o", ".iso",
