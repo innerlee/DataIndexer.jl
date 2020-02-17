@@ -16,7 +16,7 @@ STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module"
     "cached", "_bk"]
 SKIP_START = [".", "train-", "validation-"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
-    "copyright", "authors", "contributors", "thumbnail", "keyshot"]
+    "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels"]
 SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
