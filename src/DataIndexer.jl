@@ -13,10 +13,10 @@ STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "s
     "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
-    "cached"]
+    "cached", "_bk"]
 SKIP_START = [".", "train-", "validation-"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
-    "copyright", "authors", "contributors"]
+    "copyright", "authors", "contributors", "thumbnail", "keyshot"]
 SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
