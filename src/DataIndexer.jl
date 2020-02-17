@@ -15,8 +15,8 @@ STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module"
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached"]
 SKIP_START = [".", "train-", "validation-"]
-SKIP_FULL = ["label", "label~", "_SUCCESS", "checkpoint"]
-SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt."]
+SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile"]
+SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
     ".egg", ".conf", ".yaml", ".rviz", ".launch", ".xml", ".ipynb", ".c", ".cpp", ".h", ".cu", ".tsv", ".o", ".iso",
@@ -46,7 +46,7 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".inl", ".ino", ".glsl", ".cl", ".mm", ".command", "bsp", ".d", ".make", ".pov", ".osl", ".manifest", ".nsi", ".ico",
     ".po", ".blend", ".desktop", ".spi1d", ".spi3d", ".spimtx", ".icns", ".blender", ".pt", ".pak", ".css", ".dtd",
     ".gir", ".its", ".loc", ".url", ".sed", ".sin", ".header", ".charset", ".tcl", ".alias", ".qml", ".qmltypes", ".prf",
-    ".qph", ".jar", ".gradle", ".mpg", ".rmvb", ".part", ".okl"]
+    ".qph", ".jar", ".gradle", ".mpg", ".rmvb", ".part", ".okl", ".rec", ".graph"]
 
 FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z"]
 NUM_SHOW_DIR = 222
