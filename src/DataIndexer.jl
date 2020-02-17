@@ -10,12 +10,13 @@ STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components"
     "scripts"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
-    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "model.ckpt", "model.pth", "julia/stdlib/v"]
+    "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
     "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached"]
-SKIP_START = ["."]
-SKIP_IN = ["tfevents"]
+SKIP_START = [".", "train-", "validation-"]
+SKIP_FULL = ["label", "label~", "_SUCCESS", "checkpoint"]
+SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt."]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
     ".egg", ".conf", ".yaml", ".rviz", ".launch", ".xml", ".ipynb", ".c", ".cpp", ".h", ".cu", ".tsv", ".o", ".iso",
@@ -45,7 +46,7 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".inl", ".ino", ".glsl", ".cl", ".mm", ".command", "bsp", ".d", ".make", ".pov", ".osl", ".manifest", ".nsi", ".ico",
     ".po", ".blend", ".desktop", ".spi1d", ".spi3d", ".spimtx", ".icns", ".blender", ".pt", ".pak", ".css", ".dtd",
     ".gir", ".its", ".loc", ".url", ".sed", ".sin", ".header", ".charset", ".tcl", ".alias", ".qml", ".qmltypes", ".prf",
-    ".qph", ".jar", ".gradle", ".mpg"]
+    ".qph", ".jar", ".gradle", ".mpg", ".rmvb", ".part", ".okl"]
 
 FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z"]
 NUM_SHOW_DIR = 222
@@ -84,6 +85,7 @@ ispasscheck(f, p) = try
     any(x->startswith(lowercase(f), x), SKIP_START) && return true
     any(x->occursin(x, lowercase(f)), SKIP_IN) && return true
     any(x->endswith(lowercase(f), x), PASS_EXT) && return true
+    any(x->lowercase(f) == x, SKIP_FULL) && return true
     if startswith(f, p)
         s = split(f, r"[._-]", limit = 2, keepempty = false)
         length(s) == 2 && s[1] == p && tryparse(Int, s[2]) !== nothing && return true
