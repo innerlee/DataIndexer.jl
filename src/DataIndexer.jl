@@ -216,6 +216,7 @@ end
 function dataindex(ROOTDIR)
     for (root, dirs, files) in walk(ROOTDIR)
         DEBUG[] || println(root)
+        sleep(0.001)
         for f in files
             DEBUG[] || println(joinpath(root, f))
         end
