@@ -8,17 +8,18 @@ STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components"
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
     "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep", "blender",
     "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake", "dependencies", "playground",
-    "scripts", "curl", "tmp"]
+    "scripts", "curl", "tmp", "dmlc"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
     "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
     "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached", "_bk"]
-SKIP_START = [".", "train-", "validation-", "json_"]
+SKIP_START = [".", "train-", "validation-", "json_", "model_", "pre_", "extract_feature_", "log_extract_",
+    "eval_record_", "train_record_"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
     "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels", "id_rsa", "log", "notice", "install",
-    "sequence", "dummy", "changes"]
+    "sequence", "dummy", "changes", "md5file", "changelog", "n_frames"]
 SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data", ".json_"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
@@ -57,7 +58,10 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".report", ".mf", ".landmark", ".mapfile", ".ymlst", ".dummy", ".env", ".guess", ".lib", ".xyz", ".rank0", ".rank1",
     ".rank2", ".rank3", ".so.4.4.5", ".rle", ".py.1", ".py.2", ".output", ".lrprev", ".lrcat", ".orig", ".map", ".woff",
     ".woff2", ".eot", ".timelog", ".vmd", ".htm", ".sfx", ".pts", ".ts", ".doc", ".jfif", ".part1", ".part2", ".part3",
-    ".part4", ".part5", ".part6", ".part7", ".part8", ".feat", ".gemspec", ".rake", ".encrypt", ".m~", ".rpm"]
+    ".part4", ".part5", ".part6", ".part7", ".part8", ".feat", ".gemspec", ".rake", ".encrypt", ".m~", ".rpm", ".nv",
+    ".nv2", ".fmt", ".t", ".textgrid", ".dot", ".matlab", ".sd", ".chk", ".xib", ".pddm", ".swift", ".php", ".vcxproj",
+    ".props", ".targets", ".asm", ".hex", ".errwarn", ".class", ".rda", ".r", ".rmd", ".wt", ".app", ".xib", ".cnf",
+    ".c1", ".c2", ".c3", ".ncf", ".stdout", ".brew", ".port", ".status"]
 
 FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z", ".tar.xz", ".zip.1", ".rar.1", ".zip.001",
     ".z01"]
