@@ -2,22 +2,24 @@ module DataIndexer
 
 export dataindex
 
-STOPS_START = [".", "_", "-", "id_", "label ", "sdk_", "gcc-", "git-", "glew-", "bullet3-"]
+STOPS_START = [".", "_", "-", "id_", "label ", "sdk_", "gcc-", "git-", "glew-", "bullet3-", "jdk1", "roi-manually-",
+    "openssl-"]
 STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components", "src", "include", "runs", "man3",
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
     "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep", "blender",
     "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake", "dependencies", "playground",
-    "scripts"]
+    "scripts", "curl", "tmp"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
     "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
 STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module", "modules", "checkpoint", "checkpoints",
-    "log", "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
+    "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached", "_bk"]
-SKIP_START = [".", "train-", "validation-"]
+SKIP_START = [".", "train-", "validation-", "json_"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
-    "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels"]
-SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data"]
+    "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels", "id_rsa", "log", "notice", "install",
+    "sequence", "dummy", "changes"]
+SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data", ".json_"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
     ".egg", ".conf", ".yaml", ".rviz", ".launch", ".xml", ".ipynb", ".c", ".cpp", ".h", ".cu", ".tsv", ".o", ".iso",
@@ -47,9 +49,18 @@ PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar",
     ".inl", ".ino", ".glsl", ".cl", ".mm", ".command", "bsp", ".d", ".make", ".pov", ".osl", ".manifest", ".nsi", ".ico",
     ".po", ".blend", ".desktop", ".spi1d", ".spi3d", ".spimtx", ".icns", ".blender", ".pt", ".pak", ".css", ".dtd",
     ".gir", ".its", ".loc", ".url", ".sed", ".sin", ".header", ".charset", ".tcl", ".alias", ".qml", ".qmltypes", ".prf",
-    ".qph", ".jar", ".gradle", ".mpg", ".rmvb", ".part", ".okl", ".rec", ".graph"]
+    ".qph", ".jar", ".gradle", ".mpg", ".rmvb", ".part", ".okl", ".rec", ".graph", ".run", ".bk", ".autopkg", ".repo",
+    ".nvvp", ".vaml", ".record", ".txt1", ".txt3", ".asv", ".j", ".jp", ".x-ms-bmp", ".py.1", ".py.2", ".faissindex",
+    ".ui", ".qrc", ".doxy", ".vtk", ".pclzf", ".thrift", ".so.3.0", ".port", ".json1", ".jsonl", ".label", ".so.3.0.2",
+    ".pot", ".gmo", ".netrc", ".aria2", ".success", ".ids", ".aar", ".pc", ".mmp", ".pkg", ".iby", ".inf", ".mak",
+    ".def", ".com", ".opt", ".msg", ".sdl", ".cnf", ".crt", ".csr", ".cacert", ".der", ".dhp", ".prm", ".tex", ".thm",
+    ".report", ".mf", ".landmark", ".mapfile", ".ymlst", ".dummy", ".env", ".guess", ".lib", ".xyz", ".rank0", ".rank1",
+    ".rank2", ".rank3", ".so.4.4.5", ".rle", ".py.1", ".py.2", ".output", ".lrprev", ".lrcat", ".orig", ".map", ".woff",
+    ".woff2", ".eot", ".timelog", ".vmd", ".htm", ".sfx", ".pts", ".ts", ".doc", ".jfif", ".part1", ".part2", ".part3",
+    ".part4", ".part5", ".part6", ".part7", ".part8", ".feat", ".gemspec", ".rake", ".encrypt", ".m~", ".rpm"]
 
-FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z"]
+FILE_EXT = [".zip", ".tar", ".tar.gz", ".rar", ".tgz", ".tar.bz2", ".7z", ".tar.xz", ".zip.1", ".rar.1", ".zip.001",
+    ".z01"]
 NUM_SHOW_DIR = 222
 NUM_SUPPRESS = 11111
 PATTERN_DETECT_THRESHOLD = 33
