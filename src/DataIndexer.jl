@@ -8,7 +8,7 @@ STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components"
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
     "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep", "blender",
     "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake", "dependencies", "playground",
-    "scripts", "curl", "tmp", "dmlc"]
+    "scripts", "curl", "tmp", "dmlc", "trash", "gems", "wechat files", "locale", "libtool"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
     "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
@@ -16,7 +16,7 @@ STOPS_END = ["frame", "frames", "model", "models", "config", "configs", "module"
     "logs", "result", "results", "workdir", "workdirs", "work_dir", "work_dirs", "snapshot", "snapshots", "cache",
     "cached", "_bk"]
 SKIP_START = [".", "train-", "validation-", "json_", "model_", "pre_", "extract_feature_", "log_extract_",
-    "eval_record_", "train_record_"]
+    "eval_record_", "train_record_", "julia-"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
     "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels", "id_rsa", "log", "notice", "install",
     "sequence", "dummy", "changes", "md5file", "changelog", "n_frames", "julia"]
@@ -69,7 +69,9 @@ NUM_SHOW_DIR = 222
 NUM_SUPPRESS = 11111
 PATTERN_DETECT_THRESHOLD = 33
 MIN_DEPTH = 1
+DEPTH = 4
 DEBUG = [false]
+SHOW_FILES = [false]
 
 iskeepdir(d) = try
     return !(match(r"^\d+$", d) !== nothing ||
@@ -165,6 +167,12 @@ catch
 end
 
 function walk(root, depth = 0, parentname = "^")
+    if depth > DEPTH[]
+        c = Channel(0)
+        close(c)
+        return c
+    end
+
     content = nothing
     try
         content = readdir(root)
@@ -232,8 +240,10 @@ function dataindex(ROOTDIR)
     for (root, dirs, files) in walk(ROOTDIR)
         DEBUG[] || println(root)
         sleep(0.001)
-        for f in files
-            DEBUG[] || println(joinpath(root, f))
+        if SHOW_FILES[]
+            for f in files
+                DEBUG[] || println(joinpath(root, f))
+            end
         end
     end
 end
