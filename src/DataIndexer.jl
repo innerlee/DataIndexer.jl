@@ -19,7 +19,7 @@ SKIP_START = [".", "train-", "validation-", "json_", "model_", "pre_", "extract_
     "eval_record_", "train_record_"]
 SKIP_FULL = ["label", "label~", "_success", "checkpoint", "copying", "readme", "license", "dockerfile", "makefile",
     "copyright", "authors", "contributors", "thumbnail", "keyshot", "labels", "id_rsa", "log", "notice", "install",
-    "sequence", "dummy", "changes", "md5file", "changelog", "n_frames"]
+    "sequence", "dummy", "changes", "md5file", "changelog", "n_frames", "julia"]
 SKIP_IN = ["tfevents", "model.ckpt", "model.pth", ".ckpt.", ".txt.", "~backup", ".txt_", ".sh~", "model.data", ".json_"]
 PASS_EXT = [".jpg", ".png", ".avi", ".jpeg", ".mkv", ".py", ".webm", ".pth.tar", ".pth", ".tif", ".tiff", ".mp4", ".mp3",
     ".bmp", ".npy", ".gif", ".txt", ".mdb", ".flv", ".json", ".json5", ".yuv", ".h264", ".list", ".sh", ".md", ".whl",
