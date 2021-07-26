@@ -8,7 +8,7 @@ STOPS_FULL = ["__pycache__", "node_modules", "site-packages", "bower_components"
     "lib", "bin", "doc", "docs", "build", "terminfo", "debug", "tool", "tools", "gcc", "op", "ops", "env", "envs",
     "3rdparty", "crops", "experiment", "experiments", "install", "json", "mmcv", "mmdet", "openssl", "dep", "blender",
     "pkg", "pkgs", "deps", "gentoo", "awscli", "intel", "software", "softwares", "gmake", "dependencies", "playground",
-    "scripts", "curl", "tmp", "dmlc", "trash", "gems", "wechat files", "locale", "libtool"]
+    "scripts", "curl", "tmp", "dmlc", "trash", "gems", "wechat files", "locale", "libtool", "texlive", "magick", "htop"]
 STOPS_IN = ["linux", "finetune", "ffmpeg", "baseline", "inception", "opencv", "snapshots", "ccache", "epoch", "intel64",
     "caffe", "conda", "tensorrt", "cuda", "cudnn", "x86_64", "cmake", "tfevents", "egg-info", "backup", "_recovery_",
     "torch", "tensorflow", "python", "matlab", "tfrecords", "openmpi", "julia/stdlib/v"]
